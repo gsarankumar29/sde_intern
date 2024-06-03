@@ -1,0 +1,220 @@
+<!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<div class="contanier">
+    <main>
+        <div class="search-container">
+            <div class="title">
+                <h2>Enter Movie Name</h2>
+            </div>
+            <input type="text" placeholder="Type Movie Name" id="movie-name" required>
+            <button id="clicked">Search</button>
+        </div>
+    </main>
+    
+    <div id="result">             
+    </div>
+    <%if(!locals.user){%>
+        <div id="note">
+            <p>Note: Please login to create playlist, even then you can search movie without login</p>
+        </div>
+    <%}%> 
+
+    <%if(locals.user){%>
+    <div id="add-to-playlist">
+    <%}%>
+    </div>
+    
+    <div class="movies-list">
+        <%if (locals.user){%>
+        <h1>Playlist</h1>
+        <%}%>
+        <%for(list of movies){%>
+            <%if (locals.user && locals.user.id == list.user.id){%>
+            <ul>
+                <li><%= list.movie %></li>
+                <li><a href="/movies/destroy/<%= list._id %>">
+                    <i class="material-icons">delete</i>
+                    </a>
+                </li>
+            </ul>
+            <%}%>
+        <%}%>
+    </div>
+
+</div>
+<script src="/scripts/script.js"></script> -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Search</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .material-icons {
+            font-family: 'Material Icons';
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 min-h-screen flex items-center justify-center text-white">
+    <div class="container mx-auto p-4 max-w-2xl">
+        <main class="bg-white/20 shadow-lg rounded-lg p-8 mb-8 backdrop-blur-sm">
+            <div class="search-container text-center">
+                <div class="title mb-4">
+                    <h2 class="text-3xl font-bold">Enter Movie Name</h2>
+                </div>
+                <input type="text" placeholder="Type Movie Name" id="movie-name" class="border border-gray-300 rounded px-4 py-2 w-full mb-4 text-gray-800 focus:outline-none focus:border-blue-500" required>
+                <button id="clicked" class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition-all">Search</button>
+            </div>
+        </main>
+
+        <div id="result" class="bg-white/20 shadow-lg rounded-lg p-8 mb-8 backdrop-blur-sm">
+             Search results will appear here -->
+        <!-- </div>
+
+        <% if (!locals.user) { %>
+        <div id="note" class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-8">
+            <p>Note: Please login to create a playlist. You can still search for movies without logging in.</p>
+        </div>
+        <% } %>
+
+        <% if (locals.user) { %>
+        <button id="add-to-playlist" class="bg-blue-500s px-6 py-2 rounded hover:bg-gradient-to-r transition-all cursor-pointer text-center mb-8">
+            Add to Playlist
+        </button>
+        <% } %>
+
+        <div class="movies-list bg-white/20 shadow-lg rounded-lg p-8 backdrop-blur-sm">
+            <% if (locals.user) { %>
+            <h1 class="text-xl font-semibold mb-4">Playlist</h1>
+            <% } %>
+            <% for (list of movies) { %>
+                <% if (locals.user && locals.user.id == list.user.id) { %>
+                <ul class="mb-4 border-b border-gray-200 pb-2">
+                    <li class="flex items-center justify-between">
+                        <span class="text-white"><%= list.movie %></span>
+                        <a href="/movies/destroy/<%= list._id %>" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-all">
+                            <i class="material-icons">delete</i>
+                        </a>
+                    </li>
+                </ul>
+                <% } %>
+            <% } %>
+        </div>
+    </div>
+    <script src="/scripts/script.js"></script>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Search</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .material-icons {
+            font-family: 'Material Icons';
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .signout-button {
+            background-color: #f59e0b;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .signout-button:hover {
+            background-color: #fbbf24;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 min-h-screen flex items-center justify-center text-white">
+    <div class="container mx-auto p-4 max-w-2xl">
+        <header>
+            <div>
+                <h1 class="text-3xl font-bold">Cinematic Catalog</h1>
+            </div>
+            <button class="signout-button"><a href="/users/signout">Sign Out</a></button>
+
+
+        </header>
+        <main class="bg-white/20 shadow-lg rounded-lg p-8 mb-8 backdrop-blur-sm">
+            <div class="search-container text-center">
+                <div class="title mb-4">
+                    <h2 class="text-3xl font-bold">Enter Movie Name</h2>
+                </div>
+                <input type="text" placeholder="Type Movie Name" id="movie-name" class="border border-gray-300 rounded px-4 py-2 w-full mb-4 text-gray-800 focus:outline-none focus:border-blue-500" required>
+                <button id="clicked" class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition-all">Search</button>
+            </div>
+        </main>
+
+        <div id="result" class="bg-white/20 shadow-lg rounded-lg p-8 mb-8 backdrop-blur-sm">
+            <!-- Search results will appear here -->
+        </div>
+
+        <% if (!locals.user) { %>
+        <div id="note" class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-8">
+            <p>Note: Please login to create a playlist. You can still search for movies without logging in.</p>
+            <button>
+                <div style="margin-top: 20px; text-align: center;">
+                    <a href="/users/signin" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; font-weight: bold; border-radius: 5px;">Back to Login</a>
+                </div>
+        </div>
+        <% } %>
+
+        <% if (locals.user) { %>
+        <button id="add-to-playlist" class="bg-blue-500s px-6 py-2 rounded hover:bg-gradient-to-r transition-all cursor-pointer text-center mb-8">
+            Add to Playlist
+        </button>
+        <% } %>
+
+        <div class="movies-list bg-white/20 shadow-lg rounded-lg p-8 backdrop-blur-sm">
+            <% if (locals.user) { %>
+            <h1 class="text-xl font-semibold mb-4">Playlist</h1>
+            <% } %>
+            <% for (list of movies) { %>
+                <% if (locals.user && locals.user.id == list.user.id) { %>
+                <ul class="mb-4 border-b border-gray-200 pb-2">
+                    <li class="flex items-center justify-between">
+                        <span class="text-white"><%= list.movie %></span>
+                        <a href="/movies/destroy/<%= list._id %>" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-all">
+                            <i class="material-icons">delete</i>
+                        </a>
+                    </li>
+                </ul>
+                <% } %>
+            <% } %>
+        </div>
+    </div>
+    <script src="/scripts/script.js">
+
+document.querySelector('.signout-button').addEventListener('click', function() {
+    window.location.href = "/users/signin"; // Replace "/users/signin" with your actual sign-in page URL
+});
+    </script>
+</body>
+
+
+
+</html>
+
